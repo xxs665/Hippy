@@ -9,7 +9,7 @@ const hippyReactPackage = require('../packages/hippy-react/package.json');
 const hippyReactWebPackage = require('../packages/hippy-react-web/package.json');
 
 const aliases = {
-  '@localTypes': path.resolve('./types'),
+  '@localTypes': path.resolve(__dirname, '../types'),
 };
 
 function banner(name, version) {
@@ -83,6 +83,7 @@ function genConfig(name) {
     plugins: [
       replace({
         'process.env.HIPPY_REACT_VERSION': `"${hippyReactPackage.version}"`,
+        'process.env.HIPPY_REACT_WEB_VERSION': `"${hippyReactWebPackage.version}"`,
       }),
       typescript({
         transpileOnly: true,
